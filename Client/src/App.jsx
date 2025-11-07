@@ -6,7 +6,12 @@ const API = "http://localhost:3000";
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [form, setForm] = useState({ name: "", email: "", password: "", id: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    id: "",
+  });
 
   // Get all users
   async function GetData() {
@@ -95,11 +100,6 @@ function App() {
       <form className="form" onSubmit={UpdateUser}>
         <h3>Update User</h3>
         <input
-          placeholder="User id to update"
-          value={form.id}
-          onChange={(e) => setForm((f) => ({ ...f, id: e.target.value }))}
-        />
-        <input
           placeholder="New name"
           value={form.name}
           onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
@@ -140,7 +140,14 @@ function App() {
                   <td>{u.email}</td>
                   <td>
                     <button
-                      onClick={() => setForm({ id: String(u.id), name: u.name, email: u.email, password: "" })}
+                      onClick={() =>
+                        setForm({
+                          id: String(u.id),
+                          name: u.name,
+                          email: u.email,
+                          password: "",
+                        })
+                      }
                     >
                       Edit
                     </button>
